@@ -22,7 +22,7 @@ library(matchmaker)
 #that the transmitting partner is correctly identified 
 #using ML ancestral state reconstruction.
 #######################################################
-data <- read.csv("direction_public/data/pairdata.csv")
+data <- read.csv("data/pairdata.csv")
 
 ggplot(data, aes(x=p.ancestral.ER, fill=topology)) + 
         geom_vline(xintercept = c(0.05,0.4,0.6,0.95), linetype = "dashed", alpha=0.3) +
@@ -39,12 +39,12 @@ ggplot(data, aes(x=p.ancestral.ER, fill=topology)) +
 #######################################################
 #Figure 3. Model results. (Panels A and C)
 #######################################################
-auc.data_T <- read.csv("direction_public/models/binomial_l1_0.5_identityTRUE.csv")
+auc.data_T <- read.csv("models/binomial_l1_0.5_identityTRUE.csv")
 auc.data_T$type <- factor(auc.data_T$type, levels = c('E','S','G','P','ES','EG','EP','SG','SP','GP','ESG','ESP','EGP','SGP','ESGP'))
 auc.data_T$auc.equivalent <- (max(auc.data_T$auc)-auc.data_T$auc)<0.05
 
 
-auc.data_F <- read.csv("direction_public/models/binomial_l1_0.5_identityFALSE.csv")
+auc.data_F <- read.csv("models/binomial_l1_0.5_identityFALSE.csv")
 auc.data_F$type <- factor(auc.data_F$type, levels = c('E','S','G','P','ES','EG','EP','SG','SP','GP','ESG','ESP','EGP','SGP','ESGP'))
 auc.data_F$auc.equivalent <- (max(auc.data_F$auc)-auc.data_F$auc)<0.05
 
@@ -79,12 +79,12 @@ ggarrange(pA,pC, ncol = 1)
 length.out <- 30
 
 #Load data of models
-data <- read.csv("direction_public/data/pairdata.csv")
-auc.data <- read.csv("direction_public/models/binomial_l1_0.5_identityFALSE.csv")
-m0s <- readRDS("direction_public/models/binomial_l1_0.5_identityFALSE_models.rds")
-roc.m0s <- readRDS("direction_public/models/binomial_l1_0.5_identityFALSE_rocs.rds")
-matriX <- readRDS("direction_public/models/binomial_l1_0.5_identityFALSE_matriX.rds")
-matriY <- readRDS("direction_public/models/binomial_l1_0.5_identityFALSE_matriY.rds")
+data <- read.csv("data/pairdata.csv")
+auc.data <- read.csv("models/binomial_l1_0.5_identityFALSE.csv")
+m0s <- readRDS("models/binomial_l1_0.5_identityFALSE_models.rds")
+roc.m0s <- readRDS("models/binomial_l1_0.5_identityFALSE_rocs.rds")
+matriX <- readRDS("models/binomial_l1_0.5_identityFALSE_matriX.rds")
+matriY <- readRDS("models/binomial_l1_0.5_identityFALSE_matriY.rds")
 
 #Pick the best-fit model 
 auc.index <- auc.data[(max(auc.data$auc)-auc.data$auc)<0.05,] 
@@ -234,12 +234,12 @@ mylabel <- paste0('ordinal_l_', l1, '-', l2, '_prob',probabilistic,'_identity',p
 length.out <- 20
 
 #Load data of models
-data <- read.csv("direction_public/data/pairdata.csv")
-auc.data <- read.csv(paste0("direction_public/models/",mylabel,".csv"))
-m0s <- readRDS(paste0("direction_public/models/",mylabel,"_models.rds"))
-roc.m0s <- readRDS(paste0("direction_public/models/",mylabel,"_rocs.rds"))
-matriX <- readRDS(paste0("direction_public/models/",mylabel,"_matriX.rds"))
-matriY <- readRDS(paste0("direction_public/models/",mylabel,"_matriY.rds"))
+data <- read.csv("data/pairdata.csv")
+auc.data <- read.csv(paste0("models/",mylabel,".csv"))
+m0s <- readRDS(paste0("models/",mylabel,"_models.rds"))
+roc.m0s <- readRDS(paste0("models/",mylabel,"_rocs.rds"))
+matriX <- readRDS(paste0("models/",mylabel,"_matriX.rds"))
+matriY <- readRDS(paste0("models/",mylabel,"_matriY.rds"))
 
 #Pick the best-fit model 
 auc.index <- auc.data[(max(auc.data$auc)-auc.data$auc)<0.05,] #diff 0.05
@@ -396,7 +396,7 @@ ggarrange(annotate_figure(pci,  top = text_grob(model.name)), pD)
 #Supplementary Figure 1. Distribution of the values of the covariates.
 #Supplementary Figure 2.  Correlation matrix of the quantitative covariates.
 #######################################################
-data <- read.csv("direction_public/data/pairdata.csv")
+data <- read.csv("data/pairdata.csv")
 
 #Set the covariates
 data$response <- sapply(1:nrow(data), function(a) ifelse(data$p.ancestral.ER[a] <= 0.5, 'inconsistent', 'consistent'))
@@ -467,9 +467,9 @@ corrplot(cor(toPlotabs), type="upper",
 #######################################################
 #Supplementary Figure 4. Ordinal models outcomes when using routinely-available data. 
 #######################################################
-o0.6 <- read.csv("direction_public/models/ordinal_l_0.4-0.6_probTRUE_identityFALSE.csv")
-o0.95 <- read.csv("direction_public/models/ordinal_l_0.05-0.95_probTRUE_identityFALSE.csv")
-oPar <- read.csv("direction_public/models/ordinal_l_0.5-0.5_probFALSE_identityFALSE.csv")
+o0.6 <- read.csv("models/ordinal_l_0.4-0.6_probTRUE_identityFALSE.csv")
+o0.95 <- read.csv("models/ordinal_l_0.05-0.95_probTRUE_identityFALSE.csv")
+oPar <- read.csv("models/ordinal_l_0.5-0.5_probFALSE_identityFALSE.csv")
 
 o0.6$auc.equivalent <- (max(o0.6$auc)-o0.6$auc)<0.05
 o0.95$auc.equivalent <- (max(o0.95$auc)-o0.95$auc)<0.05

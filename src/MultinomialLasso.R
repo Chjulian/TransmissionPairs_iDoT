@@ -14,7 +14,7 @@ library(matchmaker)
 asinTransform <- function(p) asin(sqrt(p)) #arcsine square root transformation
 
 #Load data
-data <- read.csv("direction_public/data/pairdata.csv")
+data <- read.csv("data/pairdata.csv")
 
 #Set the approach
 #TRUE for using the identity of the transmitter, FALSE otherwise:
@@ -249,9 +249,9 @@ for(index in 1:length(formulas)){
                         "auc.min" = round(roc.m0.cis$basic[4],3),
                         "auc.max" = round(roc.m0.cis$basic[5],3),
                         "lamdba" = round(lambdas[bestLambdaIndex],3)
-                ), file = paste0("direction_public/models/", mylabel, ".csv"), 
+                ), file = paste0("models/", mylabel, ".csv"), 
                 sep=',', row.names = F, append = T,
-                col.names = !file.exists(paste0("direction_public/models/", mylabel, ".csv")))
+                col.names = !file.exists(paste0("models/", mylabel, ".csv")))
                 
         }
 
@@ -260,11 +260,11 @@ for(index in 1:length(formulas)){
 #######################################################
 #Save ROC-AUC plots (Supplementary Figure 3) and additional data
 #######################################################
-saveRDS(m0.list, paste0("direction_public/models/", mylabel, "_models.rds"))
-saveRDS(m0.roc.list, paste0("direction_public/models/", mylabel, "_rocs.rds"))
-saveRDS(m0.matriX.list, paste0("direction_public/models/", mylabel, "_matriX.rds"))
-saveRDS(m0.matriY.list, paste0("direction_public/models/", mylabel, "_matriY.rds"))
-pdf(paste0("direction_public/models/", mylabel, ".pdf"), onefile=TRUE)
+saveRDS(m0.list, paste0("models/", mylabel, "_models.rds"))
+saveRDS(m0.roc.list, paste0("models/", mylabel, "_rocs.rds"))
+saveRDS(m0.matriX.list, paste0("models/", mylabel, "_matriX.rds"))
+saveRDS(m0.matriY.list, paste0("models/", mylabel, "_matriY.rds"))
+pdf(paste0("models/", mylabel, ".pdf"), onefile=TRUE)
 for (my.plot in my.plots) {
         suppressWarnings(replayPlot(my.plot))
 }
