@@ -1,0 +1,8 @@
+"type","non0Terms","thresholds","n.covariates","auc","auc.min","auc.max","lamdba"
+"S","min.n.hap.catlow+hap.n.diff","0.05,0.95",2,0.642,0.543,0.786,0.013
+"G","alignment.length+nuc.div","0.05,0.95",2,0.686,0.608,0.774,0.013
+"P","topologyPM+MinRootToTip+PD.UEH+identitiesagree+min.inter.TBL","0.05,0.95",5,0.826,0.76,0.886,0.025
+"SG","min.n.hap.catlow+hap.n.diff+alignment.length","0.05,0.95",3,0.672,0.53,0.807,0.013
+"SP","hap.n.diff+topologyPM+MinRootToTip+PD.UEH+identitiesagree+min.inter.TBL","0.05,0.95",6,0.824,0.759,0.902,0.032
+"GP","alignment.length+topologyPM+MinRootToTip+PD.UEH+identitiesagree+min.inter.TBL","0.05,0.95",6,0.828,0.768,0.89,0.025
+"SGP","hap.n.diff+alignment.length+topologyPM+MinRootToTip+PD.UEH+identitiesagree+min.inter.TBL","0.05,0.95",7,0.826,0.754,0.918,0.032

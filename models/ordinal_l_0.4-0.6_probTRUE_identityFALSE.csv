@@ -1,0 +1,11 @@
+"type","non0Terms","thresholds","n.covariates","auc","auc.min","auc.max","lamdba"
+"S","min.n.hap.catlow+hap.n.diff","0.4,0.6",2,0.743,0.646,0.851,0.013
+"G","alignment.length+nuc.div","0.4,0.6",2,0.727,0.63,0.821,0.02
+"P","topologyPM+PD.UEH+identitiesagree+identitiesdisagree","0.4,0.6",4,0.837,0.779,0.916,0.04
+"ES","riskmsm+min.n.hap.catlow+hap.n.diff","0.4,0.6",3,0.75,0.66,0.873,0.01
+"EG","riskmsm+alignment.length+nuc.div","0.4,0.6",3,0.707,0.622,0.78,0.016
+"SG","min.n.hap.catlow+hap.n.diff+alignment.length+nuc.div","0.4,0.6",4,0.785,0.714,0.874,0.016
+"SP","min.n.hap.catlow+hap.n.diff+topologyPM+topologyPP+identitiesdisagree","0.4,0.6",5,0.876,0.812,0.96,0.02
+"GP","nuc.div+topologyPM+PD.UEH+identitiesagree+identitiesdisagree","0.4,0.6",5,0.837,0.782,0.915,0.04
+"ESG","riskmsm+min.n.hap.catlow+hap.n.diff+alignment.length+nuc.div","0.4,0.6",5,0.793,0.715,0.882,0.01
+"SGP","min.n.hap.catlow+hap.n.diff+alignment.length+nuc.div+topologyPM+topologyPP+identitiesagree+identitiesdisagree","0.4,0.6",8,0.888,0.831,0.972,0.02
