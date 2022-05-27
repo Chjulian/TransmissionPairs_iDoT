@@ -4,14 +4,14 @@ This is the code and data repository for the HIV Direction of Transmission proje
 
 This README includes:
 
-- How to cite the paper
+- Information of the paper
 - An overview of repository structure
 
 
-## Please remember to check the following:
-- Villabona-Arenas CJ, Hué S, Baxter JAC, Hall M, Lythgoe KA, Bradley J, Atkins KE (2022) "**Using Phylogenetics to infer HIV-1 Transmission Direction between known Transmission Pairs**", https://doi.org/10.1101/2021.05.12.21256968 [*To be Updated*]
+## Please remember to check/cite the following:
+- Villabona-Arenas CJ, Hué S, Baxter JAC, Hall M, Lythgoe KA, Bradley J, Atkins KE (2022) "**Using Phylogenetics to infer HIV-1 Transmission Direction between known Transmission Pairs**", https://doi.org/10.1101/2021.05.12.21256968 [*Under Review*]
 
-## Repository overview and organisation
+## Repository structure
 Our repository is structured in three parts: data, src and models.
 
 ### 1. Data.
@@ -27,7 +27,7 @@ This is a csv (`pairdata.csv`) with the following fields:
 8. **rec.nuc.div**: (substitutions per site) Nucleotide diversity of the recipient virus population.
 9. **hap.n.source**: Number of unique HIV-1 sequences collected from the transmitter partner.
 10. **hap.n.rec**: Number of unique HIV-1 sequences collected from the transmitter partner.
-11. **pFr1**: Probability of one founder unique sequence in the recipient. Estimated using the approach of Villabona-Arenas CJ, Hall M, Lythgoe KA, Gaffney SG, Regoes RR, Hué S, Atkins KE (2020) "**Number of HIV-1 founder variants is determined by the recency of the source partner infection**", Science, https**://doi.org/10.1126/science.aba5443.
+11. **pFr1**: Probability of one founder unique sequence in the recipient. Estimated using the approach of Villabona-Arenas CJ, Hall M, Lythgoe KA, Gaffney SG, Regoes RR, Hué S, Atkins KE (2020) "**Number of HIV-1 founder variants is determined by the recency of the source partner infection**", Science, https://doi.org/10.1126/science.aba5443.
 12. **topology**: The topology class (either Paraphyletic-polyphyletic (PP), Paraphyletic-monophyletic (PM) or Monophyletic-monophyletic (MM))
 13. **p.ancestral.pars**: The Ancestral State probability of the transmitter calculated using Parsimony methods.
 14. **p.ancestral.ER**: The Ancestral State probability of the transmitter calculated using Maximum Likelihood methods.
@@ -42,20 +42,20 @@ This is a csv (`pairdata.csv`) with the following fields:
 23. **site.model**: The best-fit model of nucleotide substitution using ModelFinder.
  
 ### 2. Source Code (src)
-`BinomialLasso.R` is the script to fit *binomial* statistical models using Lasso Regression and infer the AUC (Area Under The Curve) ROC (Receiver Operating Characteristics) curve. 
+`BinomialLasso.R` is the script to fit *binomial* models using Lasso Regression and infer the AUC (Area Under The Curve) ROC (Receiver Operating Characteristics) curve. 
 
-`MultinomialLasso.R` is the script to fit *multi-categorical ordinal* statistical models using Lasso Regression and infer the AUC (Area Under The Curve) ROC (Receiver Operating Characteristics) curve. 
+`MultinomialLasso.R` is the script to fit *multi-categorical ordinal*  models using Lasso Regression and infer the AUC (Area Under The Curve) ROC (Receiver Operating Characteristics) curve. 
 
-`Figures.R` generates the figures and supplementary figures in the manuscript.
+`Figures.R` generates the figures and supplementary figures in the manuscript using outputs from `BinomialLasso.R` and `MultinomialLasso.R`.
  
 ### 3. Models
 The model data generated with `BinomialLasso.R` or `MultinomialLasso.R` is stored here. The following files are saved for each approach—that is, binomial or multi-class ordinal; Probabilistic or via Maximum Parsimony; using the identity of the transmitter or not, when defining the covariates):
 
-- [filename]**\_matriX.rds**: A list with the response matrices coded as either binomial or ordinal (multi-categorical) for each model.
-- [filename]**\_matriY.rds**: A list with the predictor matrices for each model.
-- [filename]**\_models.rds**: a list with each of the models with the class "lognet", "glmnet" or "ordinalNet".
-- [filename]**\_rocs.rds**: a list with the ROC (Receiver Operating Characteristics) for each model.
-- [filename]**\.csv**: a data frame with the following information for each model:
+- [modelname]**\_matriX.rds**: A list with the response matrices coded as either binomial or ordinal (multi-categorical) for each model (required to run `Figures.R`).
+- [modelname]**\_matriY.rds**: A list with the predictor matrices for each model (required to run `Figures.R`).
+- [modelname]**\_models.rds**: A list with each of the models with the class "lognet", "glmnet" or "ordinalNet" (required to run `Figures.R`).
+- [modelname]**\_rocs.rds**: A list with the ROC (Receiver Operating Characteristics) for each model (required to run `Figures.R`).
+- [modelname]**\.csv**: A data frame with the following information for each model:
          
          - type: The model class (either E,S,G,P or any combination of them).
          - non0Terms: The model terms with non-zero coefficients.
@@ -64,4 +64,4 @@ The model data generated with `BinomialLasso.R` or `MultinomialLasso.R` is store
          - auc.min: The lower confidence interval (CI) of the AUC.
          - auc.max: The upper confidence interval (CI) of the AUC.
          - lamdba: The value of the tuning parameter lambda.
-- [filename]**\.pdf**: Plots of the AUROC (Area Under the Receiver Operating Characteristics)
+- [modelname]**\.pdf**: Plots of the AUROC (Area Under the Receiver Operating Characteristics)

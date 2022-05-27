@@ -371,20 +371,20 @@ pre code {
 Transmission project.</p>
 <p>This README includes:</p>
 <ul>
-<li>How to cite the paper</li>
+<li>Information of the paper</li>
 <li>An overview of repository structure</li>
 </ul>
-<div id="please-remember-to-check-the-following" class="section level2">
-<h2>Please remember to check the following:</h2>
+<div id="please-remember-to-checkcite-the-following" class="section level2">
+<h2>Please remember to check/cite the following:</h2>
 <ul>
 <li>Villabona-Arenas CJ, Hué S, Baxter JAC, Hall M, Lythgoe KA, Bradley
 J, Atkins KE (2022) “<strong>Using Phylogenetics to infer HIV-1
-Transmission Direction between known Transmission Pairs</strong>”, <a href="https://doi.org/10.1101/2021.05.12.21256968" class="uri">https://doi.org/10.1101/2021.05.12.21256968</a> [<em>To be
-Updated</em>]</li>
+Transmission Direction between known Transmission Pairs</strong>”, <a href="https://doi.org/10.1101/2021.05.12.21256968" class="uri">https://doi.org/10.1101/2021.05.12.21256968</a> [<em>Under
+Review</em>]</li>
 </ul>
 </div>
-<div id="repository-overview-and-organisation" class="section level2">
-<h2>Repository overview and organisation</h2>
+<div id="repository-structure" class="section level2">
+<h2>Repository structure</h2>
 <p>Our repository is structured in three parts: data, src and
 models.</p>
 <div id="data." class="section level3">
@@ -415,8 +415,7 @@ collected from the transmitter partner.</li>
 the recipient. Estimated using the approach of Villabona-Arenas CJ, Hall
 M, Lythgoe KA, Gaffney SG, Regoes RR, Hué S, Atkins KE (2020)
 “<strong>Number of HIV-1 founder variants is determined by the recency
-of the source partner infection</strong>”, Science,
-https**://doi.org/10.1126/science.aba5443.</li>
+of the source partner infection</strong>”, Science, <a href="https://doi.org/10.1126/science.aba5443" class="uri">https://doi.org/10.1126/science.aba5443</a>.</li>
 <li><strong>topology</strong>: The topology class (either
 Paraphyletic-polyphyletic (PP), Paraphyletic-monophyletic (PM) or
 Monophyletic-monophyletic (MM))</li>
@@ -449,14 +448,15 @@ substitution using ModelFinder.</li>
 <div id="source-code-src" class="section level3">
 <h3>2. Source Code (src)</h3>
 <p><code>BinomialLasso.R</code> is the script to fit <em>binomial</em>
-statistical models using Lasso Regression and infer the AUC (Area Under
-The Curve) ROC (Receiver Operating Characteristics) curve.</p>
+models using Lasso Regression and infer the AUC (Area Under The Curve)
+ROC (Receiver Operating Characteristics) curve.</p>
 <p><code>MultinomialLasso.R</code> is the script to fit
-<em>multi-categorical ordinal</em> statistical models using Lasso
-Regression and infer the AUC (Area Under The Curve) ROC (Receiver
-Operating Characteristics) curve.</p>
+<em>multi-categorical ordinal</em> models using Lasso Regression and
+infer the AUC (Area Under The Curve) ROC (Receiver Operating
+Characteristics) curve.</p>
 <p><code>Figures.R</code> generates the figures and supplementary
-figures in the manuscript.</p>
+figures in the manuscript using outputs from
+<code>BinomialLasso.R</code> and <code>MultinomialLasso.R</code>.</p>
 </div>
 <div id="models" class="section level3">
 <h3>3. Models</h3>
@@ -466,16 +466,19 @@ saved for each approach—that is, binomial or multi-class ordinal;
 Probabilistic or via Maximum Parsimony; using the identity of the
 transmitter or not, when defining the covariates):</p>
 <ul>
-<li><p>[filename]<strong>_matriX.rds</strong>: A list with the response
+<li><p>[modelname]<strong>_matriX.rds</strong>: A list with the response
 matrices coded as either binomial or ordinal (multi-categorical) for
-each model.</p></li>
-<li><p>[filename]<strong>_matriY.rds</strong>: A list with the predictor
-matrices for each model.</p></li>
-<li><p>[filename]<strong>_models.rds</strong>: a list with each of the
-models with the class “lognet”, “glmnet” or “ordinalNet”.</p></li>
-<li><p>[filename]<strong>_rocs.rds</strong>: a list with the ROC
-(Receiver Operating Characteristics) for each model.</p></li>
-<li><p>[filename]<strong>.csv</strong>: a data frame with the following
+each model (required to run <code>Figures.R</code>).</p></li>
+<li><p>[modelname]<strong>_matriY.rds</strong>: A list with the
+predictor matrices for each model (required to run
+<code>Figures.R</code>).</p></li>
+<li><p>[modelname]<strong>_models.rds</strong>: A list with each of the
+models with the class “lognet”, “glmnet” or “ordinalNet” (required to
+run <code>Figures.R</code>).</p></li>
+<li><p>[modelname]<strong>_rocs.rds</strong>: A list with the ROC
+(Receiver Operating Characteristics) for each model (required to run
+<code>Figures.R</code>).</p></li>
+<li><p>[modelname]<strong>.csv</strong>: A data frame with the following
 information for each model:</p>
 <pre><code>   - type: The model class (either E,S,G,P or any combination of them).
    - non0Terms: The model terms with non-zero coefficients.
@@ -484,7 +487,7 @@ information for each model:</p>
    - auc.min: The lower confidence interval (CI) of the AUC.
    - auc.max: The upper confidence interval (CI) of the AUC.
    - lamdba: The value of the tuning parameter lambda.</code></pre></li>
-<li><p>[filename]<strong>.pdf</strong>: Plots of the AUROC (Area Under
+<li><p>[modelname]<strong>.pdf</strong>: Plots of the AUROC (Area Under
 the Receiver Operating Characteristics)</p></li>
 </ul>
 </div>
