@@ -15,7 +15,7 @@ This README includes:
 Our repository is structured in three parts: data, src and models.
 
 ### 1. Data.
-This is a csv (`pairdata.csv`) with the following fields:
+`pairdata.csv` is used for the definition of the covariates and the data fitting. This file contains the following fields:
 
 1. **LANLdb_cluster_name**: Cluster name collected from the Los Alamos HIV Sequence Database.
 2. **risk**: Risk group for the transmission pair.
@@ -40,6 +40,36 @@ This is a csv (`pairdata.csv`) with the following fields:
 21. **sacc**: GenBank accession of the selected hit from BLAST (related genetic sequence).
 22. **pident**: The Blast' percentage of identical matches.
 23. **site.model**: The best-fit model of nucleotide substitution using ModelFinder.
+
+`datafileS1.csv` contains the epidemiological data from the original manuscripts and from LANLdb and GenBank databases. This file contains the following fields:
+
+1. **LANLdb.cluster_name**: Cluster name collected from the Los Alamos HIV Sequence Database.
+2. **LANLdb.cluster_id**: LANLdb ID collected from the Los Alamos HIV Sequence Database.
+3. **LANLdb.transmitter_id**: Los Alamos HIV Sequence Database identifier of the transmitter partner collected from the Los Alamos HIV Sequence Database.
+4. **LANLdb.recipient_id**: Los Alamos HIV Sequence Database identifier of the recipient partner collected from the Los Alamos HIV Sequence Database.
+5. **subtype**: HIV-1 subtype collected from Los Alamos HIV Sequence Database.
+6. **number_of_sequences.transmitter**: Number of HIV-1 sequences collected from the transmitter partner.
+7. **number_of_sequences.recipient**: Number of HIV-1 sequences collected from the recipient partner.
+8. **HBX2_coordinates_start**: Start of the HBX2 genome map coordinates collected from Los Alamos HIV Sequence Database.
+9. **HBX2_coordinates_end**: End of the HBX2 genome map coordinates collected from Los Alamos HIV Sequence Database.
+10. **sequence_length**: Sequence alignment length
+11. **LANLdb.days_from_infection.transmitter**: Days from transmitter partner infection collected from Los Alamos HIV Sequence Database.
+12. **LANLdb.days_from_seroconversion.transmitter**: Days from transmitter partner seroconversion collected from Los Alamos HIV Sequence Database
+13. **LANLdb.fiebig_stage.transmitter**: Transmitter partner’s fiebig stage collected from Los Alamos HIV Sequence Database
+14. **genbank.collection_date.transmitter**: Transmitter partner’s sampling date in calendar dates collected from GenBank
+15. **LANLdb.days_from_infection.recipient**: Days from recipient partner infection collected from Los Alamos HIV Sequence Database.
+16. **LANLdb.days_from_seroconversion.recipient**: Days from recipient partner seroconversion collected from Los Alamos HIV Sequence Database.
+17. **LANLdb.fiebig_stage.recipient**: Recipient partner’s fiebig stage collected from Los Alamos HIV Sequence Database
+18. **genbank.collection_date.recipient**: Recipient partner’s sampling date in calendar dates collected from GenBank
+19. **route_of_exposure**: Risk group for the transmission pair.
+20. **manuscript.authors_year**: Authors and year of publication of the study.
+21. **manuscript.doi**: Digital Object Identifier of the study.
+22. **manuscript.ethics_statement**: Ethical declaration from the manuscript.
+23. **manuscript.sequencing_information**: Sequencing platform used in the study.
+24. **manuscript.linkage_information**: Strategy to determine linkage in the study.
+25. **manuscript.additional_notes**: Additional notes from the study.
+26. **genbank.accessions.transmitter**: GenBank accession of the HIV-1 sequences collected from the transmitter partner.
+27. **genbank.accessions.recipient**: GenBank accession of the HIV-1 sequences collected from the transmitter partner.
  
 ### 2. Source Code (src)
 `BinomialLasso.R` is the script to fit *binomial* models using Lasso Regression and infer the AUC (Area Under The Curve) ROC (Receiver Operating Characteristics) curve. 
