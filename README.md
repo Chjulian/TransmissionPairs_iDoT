@@ -8,8 +8,8 @@ This README includes:
 - An overview of repository structure
 
 
-## Please remember to check/cite the following:
-- Villabona-Arenas CJ, Hué S, Baxter JAC, Hall M, Lythgoe KA, Bradley J, Atkins KE (2022) "**Using Phylogenetics to infer HIV-1 Transmission Direction between known Transmission Pairs**", https://doi.org/10.1101/2021.05.12.21256968 [*Under Review*]
+## Please remember to cite the following:
+- Villabona-Arenas CJ, Hué S, Baxter JAC, Hall M, Lythgoe KA, Bradley J, Atkins KE (2022) "**Using Phylogenetics to infer HIV-1 Transmission Direction between known Transmission Pairs**", https://doi.org/10.1073/pnas.2210604119
 
 ## Repository structure
 Our repository is structured in three parts: data, src and models.
